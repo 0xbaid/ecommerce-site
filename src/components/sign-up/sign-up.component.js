@@ -8,7 +8,7 @@ import { auth, createUserProfileDocument } from '../../firebase/firebase.utils';
 
 class SignUp extends Component {
     constructor(){
-        super()
+        super();
         this.state = {
             displayName: '',
             email: '',
@@ -17,11 +17,12 @@ class SignUp extends Component {
         }
     }
 
-    handleSubmit = async event =>{
+    handleSubmit = async event => {
         event.preventDefault();
+
         const { displayName, email, password, confirmPassword } = this.state;
-        if (password !== confirmPassword){
-            console.alert('Password doesn\'t match');
+        if (password !== confirmPassword) {
+            alert('Password doesn\'t match');
             return;
         }
 
@@ -33,7 +34,7 @@ class SignUp extends Component {
                 email: '',
                 password: '',
                 confirmPassword: ''
-            })
+            });
         }
         catch (error) {
             console.error('error')
@@ -54,7 +55,7 @@ class SignUp extends Component {
                 <h2 className='title'>I do not have account</h2>
                 <span>Sign up with your email and password</span>
 
-            <form onSubmit={this.handleSubmit}>
+            <form className='sign-up-form' onSubmit={this.handleSubmit}>
                 <FormInput
                     type='text'
                     name='displayName'
@@ -89,7 +90,6 @@ class SignUp extends Component {
                 />
                 <CustomButton type='submit'>SIGN UP</CustomButton>
             </form>
-                
             </div>
         );
     }

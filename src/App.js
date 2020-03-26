@@ -20,10 +20,12 @@ class App extends React.Component {
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
       if (userAuth){
         const userRef = await createUserProfileDocument(userAuth);
-        userRef.onSnapshot(snapshot => {
+        userRef.onSnapshot(snapShot => {
           this.setState({
-            currentUser: snapshot.id,
-            ...snapshot.data()
+            currentUser: {
+                id: snapShot.id,
+                ...snapShot.data()
+              }
           });
           console.log(this.state)
         });
@@ -48,7 +50,7 @@ class App extends React.Component {
         <Switch>
           <Route exact path='/' component={HomePage}/>
           <Route exact path='/shop' component={ShopPage}/>
-          <Route exact path='/signIn' component={SignInAndSignUpPage}/>
+          <Route exact path='/signin' component={SignInAndSignUpPage}/>
         </Switch>
       </div>
     );

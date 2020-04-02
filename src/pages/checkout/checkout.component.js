@@ -4,7 +4,7 @@ import './checkout.style.scss';
 import { connect } from 'react-redux';
 import { selectCartItems, selectCartTotal } from '../../redux/cart/cart.selectors';
 
-const CheckoutPage = ({cartItems, total}) => {
+const CheckoutPage = ({cartItems, total, toggleCartHidden}) => {
     return (
         <div className='checkout-page'>
             <div className='checkout-header'>
@@ -34,9 +34,10 @@ const CheckoutPage = ({cartItems, total}) => {
     );
 };
 
+
 const mapStateToProps = state =>({
     cartItems: selectCartItems(state),
     total: selectCartTotal(state)
 })
 
-export default connect(mapStateToProps,null)(CheckoutPage);
+export default connect(mapStateToProps, null)(CheckoutPage);

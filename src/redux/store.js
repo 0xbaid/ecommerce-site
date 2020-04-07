@@ -8,6 +8,6 @@ const middlewares = [];
 if (process.end.NODE_ENV === 'development') {
     middlewares.push(logger);
 }
-export const store = createStore(rootReducer, applyMiddleware(...middleWares));
+export const store = createStore(rootReducer, applyMiddleware(...middlewares));
 export const persistor = persistStore(store);
 
